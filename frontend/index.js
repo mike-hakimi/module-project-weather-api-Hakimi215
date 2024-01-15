@@ -7,7 +7,7 @@ async function moduleProject4() {
   // 👇 WORK WORK BELOW THIS LINE 👇
   const footer = document.querySelector('footer')
   const currentYear = new Date().getFullYear()
-  footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
+  footer.textContent = `© Mirwes Hakimi ${currentYear}`
  
   let descriptions = [
     ["Sunny", "☀️"],
@@ -53,13 +53,31 @@ document.querySelector('#todayStats div:nth-child(2)')
 document.querySelector('#todayStats div:nth-child(4)')
 .textContent = ` Wind: ${data.current.wind_speed}m/s`
 
+data.forecast.daily.forEach((day, idx) => {
+  let card = document.querySelectorAll('.next-day')[idx]
+
+  let weekDay = card.children[0]
+  let apparent = card.children[1]
+  let minMax = card.children[2]
+  let precipit = card.children[3]
+
+  weekDay.textContent = getWeekDay(day.date)
+  apparent.textContent = descriptions.find(d => d[0] === day.weather_description)[1]
+  minMax.textContent = `${day.temperature_min}°/${day.temperature_max}°`
+  precipit.textContent = `Precipitation: ${day.precipitation_probability * 100}%`
+})
+
+
+document.querySelector('#location').firstElementChild.textContent = data.location.city
 }
   catch(err){
    console.log('Promise rejected with an error: ',err.message)
   }
  })
 
-  
+  function getWeekDay(data){
+    return data
+  }
 
 
   // 👆 WORK WORK ABOVE THIS LINE 👆
