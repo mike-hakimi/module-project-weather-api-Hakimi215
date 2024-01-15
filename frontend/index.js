@@ -1,10 +1,14 @@
+// const { default: axios } = require("axios")
+
+
+
 async function moduleProject4() {
 
   // 👇 WORK WORK BELOW THIS LINE 👇
   const footer = document.querySelector('footer')
   const currentYear = new Date().getFullYear()
   footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
-
+ 
   let descriptions = [
     ["Sunny", "☀️"],
     ["Cloudy", "☁️"],
@@ -15,6 +19,27 @@ async function moduleProject4() {
   ]
 
   // 👉 Tasks 1 - 5 go here
+
+  const widgetWeather = document.querySelector('#weatherWidget')
+  widgetWeather.style.display= 'none'
+
+  const selectCity = document.getElementById('citySelect');
+ selectCity.addEventListener('change', async evt => {
+  try {
+  evt.target.setAttribute('disabled', 'disabled')
+  widgetWeather.style.display= 'none';
+  document.querySelector('.info').textContent = 'Fetching weather data...'
+ 
+  let city = evt.target.value;
+ 
+}
+  catch(err){
+   console.log('Promise rejected with an error: ',err.message)
+  }
+ })
+
+  
+
 
   // 👆 WORK WORK ABOVE THIS LINE 👆
 
