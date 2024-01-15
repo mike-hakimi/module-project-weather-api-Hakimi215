@@ -37,6 +37,22 @@ async function moduleProject4() {
 widgetWeather.style.display = 'block';
 document.querySelector('.info').textContent = '';
 evt.target.removeAttribute('disabled')
+
+let { data } = res
+
+document.querySelector('#apparentTemp div:nth-child(2)')
+.textContent = `${data.current.apparent_temperature}°`
+document.querySelector('#todayDescription')
+.textContent = descriptions.find(d => d[0] === data.current.weather_description)[1]
+document.querySelector('#todayStats div:nth-child(1)')
+.textContent = `${data.current.temperature_min}°/${data.current.temperature_max}°`
+document.querySelector('#todayStats div:nth-child(2)')
+.textContent = `Precipitation: ${data.current.precipitation_probability * 100} %`
+document.querySelector('#todayStats div:nth-child(2)')
+.textContent = `Humidity: ${data.current.humidity}%`
+document.querySelector('#todayStats div:nth-child(4)')
+.textContent = ` Wind: ${data.current.wind_speed}m/s`
+
 }
   catch(err){
    console.log('Promise rejected with an error: ',err.message)
