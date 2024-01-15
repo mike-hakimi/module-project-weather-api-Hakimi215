@@ -31,7 +31,12 @@ async function moduleProject4() {
   document.querySelector('.info').textContent = 'Fetching weather data...'
  
   let city = evt.target.value;
- 
+ const res = await axios.get(`http://localhost:3003/api/weather?city=${city}`)
+ console.log(res.data)
+
+widgetWeather.style.display = 'block';
+document.querySelector('.info').textContent = '';
+evt.target.removeAttribute('disabled')
 }
   catch(err){
    console.log('Promise rejected with an error: ',err.message)
