@@ -18,7 +18,7 @@ async function moduleProject4() {
     ["Partly Cloudy", "⛅️"]
   ]
 
-  // 👉 Tasks 1 - 5 go here
+  // 👉 Tasks 1 - 5 go here 
 
   const widgetWeather = document.querySelector('#weatherWidget')
   widgetWeather.style.display= 'none'
